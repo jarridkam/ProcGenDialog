@@ -10,8 +10,8 @@ namespace ProcgenDialog
 
         public enum TestFaction
         {
-            KnightsOfGoodness,
-            WizardsOfBadness
+            TheKnightsofGoodness,
+            TheWizardsOfBadness
         }
 
         public enum TestLocation
@@ -20,7 +20,7 @@ namespace ProcgenDialog
             EvilForest
         }
 
-        public static TestFaction currentFaction = TestFaction.KnightsOfGoodness;
+        public static TestFaction currentFaction = TestFaction.TheWizardsOfBadness;
         public static TestLocation currentLocation = TestLocation.Cityshire;
     }
 }

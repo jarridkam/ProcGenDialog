@@ -7,15 +7,14 @@ namespace ProcgenDialog
 {
     public class Dialog
     {
+        public Dialog() { }
         public Greeting[] greetings;
-        public Topic[] topicHub;
-        public MultipleChoice MultipleChoice;
-
     }
 
     public class DialogComponent
     {
         public string text;
+        public int importance;
     }
     public class Greeting : DialogComponent
     {
@@ -28,9 +27,14 @@ namespace ProcgenDialog
     {
         public Topic(Statement statement)
         {
-            this.text = statement.text;
+            text = statement.text;
             
         }
+        public Topic(string text)
+        {
+            this.text = text;
+        }
+
         public string response;
     }
     public class MultipleChoice
@@ -67,7 +71,7 @@ namespace ProcgenDialog
         public MultipleChoice multipleChoice = null;
 
     }
-    public class Statement
+    public struct Statement
     {
         public string text { get; set; }
 
@@ -78,11 +82,9 @@ namespace ProcgenDialog
 
         public void ApplyReplacements(Dictionary<string, string> replacements)
         {
-            Debug.Log("Before replacements: " + text);
-
             foreach (var kvp in replacements)
             {
-                text = Regex.Replace(text, kvp.Key, kvp.Value);
+                text = Regex.Replace(text, (kvp.Key), kvp.Value);
             }
         }
     }
